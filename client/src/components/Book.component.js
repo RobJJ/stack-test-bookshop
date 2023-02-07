@@ -6,3 +6,10 @@ function Book(params) {
 }
 
 export default Book;
+
+// Book structure
+// Book = {
+//     name: "Harry Potter",
+//     author: "JK Rowling",
+//     rating: 4
+// }
