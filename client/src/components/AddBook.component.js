@@ -6,7 +6,7 @@ const newBookTemplate = {
   rating: "",
 };
 //
-function AddBook(params) {
+function AddBook({ books, setBooks }) {
   //
   const [newBook, setNewBook] = useState(newBookTemplate);
   //
@@ -14,7 +14,10 @@ function AddBook(params) {
   //
   function addBookToList(e) {
     e.preventDefault();
-    console.log(newBook);
+    // Add newBook to list
+    setBooks([...books, newBook]);
+    // set addBook comp to default position
+    setNewBook(newBookTemplate);
   }
   //
   return (
