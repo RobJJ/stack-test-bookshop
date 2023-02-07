@@ -1,12 +1,14 @@
 const http = require("http");
 require("dotenv").config();
-
+const app = require("./app");
 const PORT = process.env.PORT;
-
-const server = http.createServer((req, res) => {
-  res.end("Hello World!");
-});
-
+//
+//
+//
+const server = http.createServer(app);
+//
+//
+//
 server.listen(PORT, () => {
-  console.log("Server running on port 8000");
+  console.log(`Server running on port: ${PORT}.... yeah bois!`);
 });
