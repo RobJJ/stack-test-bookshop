@@ -6,9 +6,10 @@ const newBookTemplate = {
   rating: "",
 };
 //
-function AddBook({ books, setBooks }) {
+function AddBook({ books, setBooks, submitBook }) {
   //
   const [newBook, setNewBook] = useState(newBookTemplate);
+
   //
 
   //
@@ -21,12 +22,14 @@ function AddBook({ books, setBooks }) {
   }
   //
   return (
-    <form onSubmit={addBookToList} className="w-full bg-white flex text-center">
+    <form onSubmit={submitBook} className="w-full bg-white flex text-center">
       <div className="w-1/4">
         <input
           className="text-center w-full"
           type="text"
           placeholder="Book Name"
+          id="book-name"
+          name="book-name"
           value={newBook.name}
           onChange={(e) => setNewBook({ ...newBook, name: e.target.value })}
         />
@@ -36,6 +39,8 @@ function AddBook({ books, setBooks }) {
           className="text-center w-full"
           type="text"
           placeholder="Author"
+          id="book-author"
+          name="book-author"
           value={newBook.author}
           onChange={(e) => setNewBook({ ...newBook, author: e.target.value })}
         />
@@ -45,6 +50,8 @@ function AddBook({ books, setBooks }) {
           className="text-center w-full"
           type="text"
           placeholder="Rating"
+          id="book-rating"
+          name="book-rating"
           value={newBook.rating}
           onChange={(e) => setNewBook({ ...newBook, rating: e.target.value })}
         />
