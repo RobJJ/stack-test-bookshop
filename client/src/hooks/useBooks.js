@@ -15,6 +15,7 @@ function useBooks() {
       author,
       rating,
     });
+    console.log(response);
 
     const success = response.ok;
     if (success) {
