@@ -1,9 +1,10 @@
-const API_URL = "http:localhost:8000/v1";
+// const API_URL = "http:localhost:8000/v1";
 
 // handles frontend request
 async function httpSubmitNewBook(book) {
+  // going to remove ${API_URL} before /books
   try {
-    return await fetch(`${API_URL}/books`, {
+    return await fetch(`/v1/books`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",

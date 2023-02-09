@@ -13,13 +13,13 @@ function AddBook({ books, setBooks, submitBook }) {
   //
 
   //
-  function addBookToList(e) {
-    e.preventDefault();
-    // Add newBook to list
-    setBooks([...books, newBook]);
-    // set addBook comp to default position
-    setNewBook(newBookTemplate);
-  }
+  // function addBookToList(e) {
+  //   e.preventDefault();
+  //   // Add newBook to list
+  //   setBooks([...books, newBook]);
+  //   // set addBook comp to default position
+  //   setNewBook(newBookTemplate);
+  // }
   //
   return (
     <form onSubmit={submitBook} className="w-full bg-white flex text-center">

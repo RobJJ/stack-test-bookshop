@@ -4,6 +4,7 @@ const { addNewBook } = require("../../models/books.model");
 //
 async function httpAddNewBook(req, res) {
   const book = req.body;
+  console.log("(books.controller)request... book: ", book);
   // conditions
   if (!book.name || !book.author || !book.rating) {
     return res.status(400).json({
@@ -12,7 +13,7 @@ async function httpAddNewBook(req, res) {
   }
   // If all is well...
   await addNewBook(book);
-  return res.status(201).json(launch);
+  return res.status(201).json(book);
 }
 
 module.exports = {
