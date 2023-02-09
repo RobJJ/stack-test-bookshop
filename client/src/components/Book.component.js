@@ -5,6 +5,8 @@ function Book({ book }) {
   //
   const { name, author, rating } = book;
   //
+
+  //
   return (
     <div className="w-full flex border border-black text-center">
       <div className="w-1/4">{name}</div>

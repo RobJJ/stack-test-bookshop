@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { httpSubmitNewBook } from "./requests";
+import { httpSubmitNewBook, httpDeleteBook } from "./requests";
 
 function useBooks() {
   // all functions related to using books
@@ -20,6 +20,10 @@ function useBooks() {
     if (success) {
       // TODO: get list of books here
     }
+  }, []);
+
+  const deleteBook = useCallback(async (id) => {
+    const response = await httpDeleteBook(id);
   }, []);
 
   return { submitBook };

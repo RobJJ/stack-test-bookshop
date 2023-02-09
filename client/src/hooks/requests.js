@@ -18,4 +18,16 @@ async function httpSubmitNewBook(book) {
   }
 }
 
-export { httpSubmitNewBook };
+async function httpDeleteBook(id) {
+  try {
+    return await fetch(`/v1/books/${id}`, {
+      method: "delete",
+    });
+  } catch (error) {
+    return {
+      ok: false,
+    };
+  }
+}
+
+export { httpSubmitNewBook, httpDeleteBook };
