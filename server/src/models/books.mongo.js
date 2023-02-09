@@ -4,6 +4,7 @@ const booksSchema = new mongoose.Schema({
   name: { type: String, required: true },
   author: { type: String, required: true },
   rating: { type: String, required: true },
+  inStock: { type: Boolean, required: true, default: true },
 });
 
 // 1st argument: Capital + Singular... mongoose then lowers and plurals and matches db collection
