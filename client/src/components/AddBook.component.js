@@ -9,9 +9,6 @@ const newBookTemplate = {
 function AddBook({ books, setBooks, submitBook }) {
   //
   const [newBook, setNewBook] = useState(newBookTemplate);
-
-  //
-
   //
 
   //
