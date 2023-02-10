@@ -1,7 +1,9 @@
-import { useCallback } from "react";
-import { httpSubmitNewBook, httpDeleteBook } from "./requests";
+import { useCallback, useEffect, useState } from "react";
+import { httpSubmitNewBook, httpDeleteBook, httpGetBooks } from "./requests";
 
 function useBooks() {
+  // Local State for Books
+  const [books, saveBooks] = useState([]);
   // all functions related to using books
 
   const submitBook = useCallback(async (e) => {
@@ -27,7 +29,17 @@ function useBooks() {
     const response = await httpDeleteBook(id);
   }, []);
 
-  return { submitBook };
+  const getBooks = useCallback(async () => {
+    const fetchedBooks = await httpGetBooks();
+
+    saveBooks(fetchedBooks);
+  }, []);
+
+  useEffect(() => {
+    getBooks();
+  }, [getBooks]);
+
+  return { submitBook, deleteBook, books };
 }
 
 export default useBooks;

@@ -2,6 +2,7 @@ const {
   addNewBook,
   existsBookWithId,
   deleteBookWithId,
+  getAllBooks,
 } = require("../../models/books.model");
 //
 //
@@ -44,7 +45,12 @@ async function httpDeleteBook(req, res) {
   });
 }
 
+async function httpGetAllBooks(req, res) {
+  return res.status(200).json(await getAllBooks());
+}
+
 module.exports = {
   httpAddNewBook,
   httpDeleteBook,
+  httpGetAllBooks,
 };

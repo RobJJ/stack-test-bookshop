@@ -47,8 +47,22 @@ async function deleteBookWithId(bookId) {
   return deletedBook.modifiedCount === 1;
 }
 //
+//
+//
+async function getAllBooks() {
+  // find planets, 2nd param to excl these 1=yes, 0=no
+  return await books.find(
+    {},
+    {
+      _id: 0,
+      __v: 0,
+    }
+  );
+}
+//
 module.exports = {
   addNewBook,
   existsBookWithId,
   deleteBookWithId,
+  getAllBooks,
 };

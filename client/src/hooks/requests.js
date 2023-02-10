@@ -1,4 +1,4 @@
-// const API_URL = "http:localhost:8000/v1";
+// const API_URL = "/v1";
 
 // handles frontend request
 async function httpSubmitNewBook(book) {
@@ -30,4 +30,11 @@ async function httpDeleteBook(id) {
   }
 }
 
-export { httpSubmitNewBook, httpDeleteBook };
+async function httpGetBooks() {
+  const response = await fetch(`/v1/books`, {
+    method: "get",
+  });
+  return await response.json();
+}
+
+export { httpSubmitNewBook, httpDeleteBook, httpGetBooks };
