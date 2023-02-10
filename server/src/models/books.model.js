@@ -33,7 +33,7 @@ async function addNewBook(book) {
 //
 async function existsBookWithId(bookId) {
   return await books.findOne({
-    bookId: `${bookId}`,
+    bookId: bookId,
   });
 }
 //

@@ -25,6 +25,7 @@ async function httpDeleteBook(req, res) {
   // TODO get proper id : changed to look at query for now
   const bookId = req.query.id;
   console.log("BookID http: ", bookId);
+  console.log("BookID type: ", typeof bookId);
   // Check: if book does not exist
   const bookExists = await existsBookWithId(bookId);
   if (!bookExists) {

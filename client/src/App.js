@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import AddBook from "./components/AddBook.component";
 //
@@ -9,7 +9,7 @@ import BookList from "./components/BookList.component";
 function App() {
   //
 
-  const { submitBook, books } = useBooks();
+  const { submitBook, books, deleteBook } = useBooks();
 
   //
   return (
@@ -18,7 +18,7 @@ function App() {
         <AddBook submitBook={submitBook} />
         <section className="w-full bg-white flex flex-col">
           <div className="w-full text-2xl underline text-center">Book List</div>
-          <BookList books={books} />
+          <BookList books={books} deleteBook={deleteBook} />
         </section>
       </div>
     </div>

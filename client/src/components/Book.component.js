@@ -1,7 +1,7 @@
 import React from "react";
 //
 //
-function Book({ book }) {
+function Book({ book, deleteBook }) {
   //
   const { name, author, rating } = book;
   //
@@ -14,7 +14,9 @@ function Book({ book }) {
       <div className="w-1/4">{rating}</div>
       <div className="w-1/4 flex">
         <div className="w-1/2 bg-green-200">Edit</div>
-        <div className="w-1/2 bg-red-200">Del</div>
+        <div className="w-1/2 bg-red-200 cursor-pointer" onClick={deleteBook}>
+          Del
+        </div>
       </div>
     </div>
   );

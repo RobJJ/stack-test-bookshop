@@ -20,10 +20,11 @@ async function httpSubmitNewBook(book) {
 
 async function httpDeleteBook(id) {
   try {
-    return await fetch(`/v1/books/${id}`, {
+    return await fetch(`/v1/books/?id=${id}`, {
       method: "delete",
     });
   } catch (error) {
+    console.log("error:: ", error);
     return {
       ok: false,
     };

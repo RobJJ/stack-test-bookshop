@@ -6,3 +6,8 @@ Questions
    useEffect(() => {
    getBooks();
    }, [getBooks]);
+
+3. When debugging a 404 call on the frontend... how can I catch these errors? The
+   im getting this ::
+   DELETE http://localhost:8000/v1/books/4b8ec421-de80-439e-98eb-e0213b057c07 404 (Not Found) requests.js:23
+   but i cant log more here??

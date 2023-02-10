@@ -8,7 +8,7 @@ const {
 const booksRouter = express.Router();
 
 booksRouter.post("/", httpAddNewBook);
-booksRouter.delete(`/`, httpDeleteBook);
+booksRouter.delete("/", httpDeleteBook);
 booksRouter.get("/", httpGetAllBooks);
 
 module.exports = { booksRouter };
