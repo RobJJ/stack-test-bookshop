@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 import AddBook from "./components/AddBook.component";
 //
 import useBooks from "./hooks/useBooks";
 import BookList from "./components/BookList.component";
 //
+const testingBookList = [
+  { name: "Arry Pooper", author: "JK Bowl", rating: "5", inStock: true },
+  { name: "Block Boys", author: "RJ Slice", rating: "4", inStock: true },
+  { name: "McPooper", author: "MaiPoops", rating: "2", inStock: true },
+];
 //
 function App() {
   //
+  const [testingBooks, setTestingBooks] = useState(testingBookList);
 
   const { submitBook, books, deleteBook } = useBooks();
 
@@ -18,7 +24,7 @@ function App() {
         <AddBook submitBook={submitBook} />
         <section className="w-full bg-white flex flex-col">
           <div className="w-full text-2xl underline text-center">Book List</div>
-          <BookList books={books} deleteBook={deleteBook} />
+          <BookList books={testingBooks} deleteBook={deleteBook} />
         </section>
       </div>
     </div>
