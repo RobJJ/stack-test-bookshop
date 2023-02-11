@@ -23,3 +23,12 @@ todo: update a book inline
 // lets do the first part first before interating with backend http
 
 // what ive done is change the bookList to use test data instead of books
+
+//
+//
+bug:
+the db is being updated correct when deleting a book, but the front end is showing the wrong list of books... its removing the bottom one every time... when we call the getBooks() method, why is it not repopulating the order of the books displayed?439e
+
+bug:
+the front end is being updated nicely with the edit of the book,, but the backend is not being updated
+I think both these problems have something to do with the ID of the book not corresponding to what we are doing with the backend... dono..

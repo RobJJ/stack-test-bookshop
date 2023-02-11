@@ -1,5 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import { httpSubmitNewBook, httpDeleteBook, httpGetBooks } from "./requests";
+import {
+  httpSubmitNewBook,
+  httpDeleteBook,
+  httpGetBooks,
+  httpUpdateBook,
+} from "./requests";
 
 function useBooks() {
   // Local State for Books
@@ -48,11 +53,24 @@ function useBooks() {
     [getBooks]
   );
 
+  const updateBook = useCallback(
+    async (id, updatedBook) => {
+      const response = await httpUpdateBook(id, updatedBook);
+      const success = response.ok;
+      if (success) {
+        getBooks();
+      } else {
+        // handle problem here
+      }
+    },
+    [getBooks]
+  );
+
   useEffect(() => {
     getBooks();
   }, [getBooks]);
 
-  return { submitBook, deleteBook, books };
+  return { submitBook, deleteBook, books, updateBook };
 }
 
 export default useBooks;

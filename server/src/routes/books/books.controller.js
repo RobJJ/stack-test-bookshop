@@ -2,6 +2,7 @@ const {
   addNewBook,
   existsBookWithId,
   deleteBookWithId,
+  updateBookWithId,
   getAllBooks,
 } = require("../../models/books.model");
 //
@@ -22,10 +23,8 @@ async function httpAddNewBook(req, res) {
 }
 
 async function httpDeleteBook(req, res) {
-  // TODO get proper id : changed to look at query for now
+  //
   const bookId = req.query.id;
-  console.log("BookID http: ", bookId);
-  console.log("BookID type: ", typeof bookId);
   // Check: if book does not exist
   const bookExists = await existsBookWithId(bookId);
   if (!bookExists) {
@@ -50,8 +49,31 @@ async function httpGetAllBooks(req, res) {
   return res.status(200).json(await getAllBooks());
 }
 
+async function httpUpdateBook(req, res) {
+  const bookId = req.query.id;
+  const book = req.body;
+  //
+  const bookExists = await existsBookWithId(bookId);
+  if (!bookExists) {
+    return res.status(404).json({
+      error: "Book not found!",
+    });
+  }
+  //
+  const updatedBook = await updateBookWithId(bookId, book);
+  if (!updatedBook) {
+    return res.status(400).json({
+      error: "Book not updated!",
+    });
+  }
+  return res.status(200).json({
+    ok: true,
+  });
+}
+
 module.exports = {
   httpAddNewBook,
   httpDeleteBook,
   httpGetAllBooks,
+  httpUpdateBook,
 };

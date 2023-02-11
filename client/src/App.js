@@ -13,9 +13,9 @@ const testingBookList = [
 //
 function App() {
   //
-  const [testingBooks, setTestingBooks] = useState(testingBookList);
+  // const [testingBooks, setTestingBooks] = useState(testingBookList);
 
-  const { submitBook, books, deleteBook } = useBooks();
+  const { submitBook, books, deleteBook, updateBook } = useBooks();
 
   //
   return (
@@ -24,7 +24,11 @@ function App() {
         <AddBook submitBook={submitBook} />
         <section className="w-full bg-white flex flex-col">
           <div className="w-full text-2xl underline text-center">Book List</div>
-          <BookList books={testingBooks} deleteBook={deleteBook} />
+          <BookList
+            books={books}
+            deleteBook={deleteBook}
+            updateBook={updateBook}
+          />
         </section>
       </div>
     </div>

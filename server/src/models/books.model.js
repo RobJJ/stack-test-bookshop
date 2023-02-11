@@ -60,9 +60,18 @@ async function getAllBooks() {
   );
 }
 //
+//
+//
+async function updateBookWithId(bookId, book) {
+  const updatedBook = await books.updateOne({ bookId: bookId }, { $set: book });
+  // return meta data from mongoose
+  return updatedBook.modifiedCount === 1;
+}
+//
 module.exports = {
   addNewBook,
   existsBookWithId,
   deleteBookWithId,
   getAllBooks,
+  updateBookWithId,
 };

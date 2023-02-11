@@ -24,7 +24,6 @@ async function httpDeleteBook(id) {
       method: "delete",
     });
   } catch (error) {
-    console.log("error:: ", error);
     return {
       ok: false,
     };
@@ -38,4 +37,20 @@ async function httpGetBooks() {
   return await response.json();
 }
 
-export { httpSubmitNewBook, httpDeleteBook, httpGetBooks };
+async function httpUpdateBook(id, updatedBook) {
+  try {
+    return await fetch(`/v1/books/?id=${id}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedBook),
+    });
+  } catch (error) {
+    return {
+      ok: false,
+    };
+  }
+}
+
+export { httpSubmitNewBook, httpDeleteBook, httpGetBooks, httpUpdateBook };

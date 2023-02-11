@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 //
 //
-function Book({ book, deleteBook }) {
+function Book({ book, deleteBook, updateBook }) {
   //
+  const bookId = book.bookId;
   // const { name, author, rating } = book;
   const [isDisabled, setIsDisabled] = useState(true);
   // maybe replace the standard destructuring with this
@@ -30,6 +31,7 @@ function Book({ book, deleteBook }) {
     console.log("Book has been edited!");
     setBookStateBeforeEdit({ ...localBook });
     // handle the http call here... call the http function with the localBook object that contains the new values to update
+    updateBook(bookId, bookStateBeforeEdit);
     setIsDisabled(!isDisabled);
   }
   //
