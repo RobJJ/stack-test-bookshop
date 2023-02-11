@@ -3,16 +3,31 @@ import React, { useState } from "react";
 //
 function Book({ book, deleteBook }) {
   //
-  const { name, author, rating } = book;
+  // const { name, author, rating } = book;
   const [isDisabled, setIsDisabled] = useState(true);
-  const [editedBook, setEditedBook] = useState({ ...book });
+  // maybe replace the standard destructuring with this
+  const [localBook, setLocalBook] = useState({ ...book });
   //
   function disableToggle(e) {
     setIsDisabled(!isDisabled);
   }
   //
-  function handleBookEdit() {
+  function cancelEdit() {
+    console.log("Editing of book aborted!");
+    setIsDisabled(!isDisabled);
+  }
+  //
+  function handleBookEdit(e) {
     //
+    const prop = e.target.id;
+    const newBook = { ...localBook, [prop]: e.target.value };
+    setLocalBook(newBook);
+  }
+  //
+  function acceptEdit() {
+    console.log("Book has been edited!");
+    // handle the http call here... call the http function with the localBook object that contains the new values to update
+    setIsDisabled(!isDisabled);
   }
   //
   //
@@ -21,30 +36,39 @@ function Book({ book, deleteBook }) {
       <input
         disabled={isDisabled}
         className="w-1/4"
-        value={name}
-        id="book-name"
+        value={localBook.name}
+        onChange={handleBookEdit}
+        id="name"
         type="text"
       ></input>
       <input
         disabled={isDisabled}
         className="w-1/4"
-        value={author}
+        value={localBook.author}
+        onChange={handleBookEdit}
         type="text"
-        id="book-author"
+        id="author"
       ></input>
       <input
         disabled={isDisabled}
         className="w-1/4"
-        value={rating}
+        value={localBook.rating}
+        onChange={handleBookEdit}
         type="text"
-        id="book-rating"
+        id="rating"
       ></input>
       <div className="w-1/4 flex">
-        <div className="w-1/2 bg-green-200" onClick={disableToggle}>
+        <div
+          className="w-1/2 bg-green-200"
+          onClick={isDisabled ? disableToggle : acceptEdit}
+        >
           {isDisabled ? "Edit" : "Accept"}
         </div>
-        <div className="w-1/2 bg-red-200 cursor-pointer" onClick={deleteBook}>
-          Del
+        <div
+          className="w-1/2 bg-red-200 cursor-pointer"
+          onClick={isDisabled ? deleteBook : cancelEdit}
+        >
+          {isDisabled ? "Del" : "Cancel"}
         </div>
       </div>
     </div>
