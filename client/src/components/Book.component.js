@@ -13,7 +13,7 @@ function Book({ book, deleteBook, updateBook }) {
   const [isDisabled, setIsDisabled] = useState(true);
   // maybe replace the standard destructuring with this
   const [localBook, setLocalBook] = useState({ ...book });
-  const [bookStateBeforeEdit, setBookStateBeforeEdit] = useState({ ...book });
+  // const [bookStateBeforeEdit, setBookStateBeforeEdit] = useState({ ...book });
   //
   function toggleDisable(e) {
     setIsDisabled(!isDisabled);
@@ -21,7 +21,7 @@ function Book({ book, deleteBook, updateBook }) {
   //
   function abortBookEdit() {
     console.log("Editing of book aborted!");
-    setLocalBook({ ...bookStateBeforeEdit });
+    setLocalBook({ ...book });
     toggleDisable();
   }
   //
@@ -34,7 +34,7 @@ function Book({ book, deleteBook, updateBook }) {
   //
   function acceptBookEdit() {
     console.log("Book has been edited!");
-    setBookStateBeforeEdit({ ...localBook });
+    // setBookStateBeforeEdit({ ...localBook });
     // handle the http call here... call the http function with the localBook object that contains the new values to update
     updateBook(bookId, localBook);
     setIsDisabled(!isDisabled);
