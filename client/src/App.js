@@ -12,11 +12,12 @@ const testingBookList = [
 ];
 //
 function App() {
+  console.log("App Component called!!");
   //
   // const [testingBooks, setTestingBooks] = useState(testingBookList);
 
   const { submitBook, books, deleteBook, updateBook } = useBooks();
-
+  console.log("Books Object:: ", books);
   //
   return (
     <div className="w-screen h-screen p-10">

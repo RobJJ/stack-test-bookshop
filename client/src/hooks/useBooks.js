@@ -12,6 +12,7 @@ function useBooks() {
   // all functions related to using books
 
   const getBooks = useCallback(async () => {
+    console.log("GetBooks function being called!");
     const fetchedBooks = await httpGetBooks();
 
     saveBooks(fetchedBooks);
@@ -45,7 +46,9 @@ function useBooks() {
       const success = response.ok;
       if (success) {
         // reload books...
-        getBooks();
+        console.log("is this being called??");
+        // get books is not actually refreshing the page with new books
+        await getBooks();
       } else {
         // let user know it wasnt successfull
       }

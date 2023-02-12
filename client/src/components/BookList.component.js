@@ -3,6 +3,7 @@ import Book from "./Book.component";
 //
 //
 const BookList = ({ books, deleteBook, updateBook }) => {
+  console.log("BookList Component called!!");
   //
   return (
     <div className="flex flex-col w-full p-2 gap-2">

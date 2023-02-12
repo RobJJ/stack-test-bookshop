@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 //
 //
 function Book({ book, deleteBook, updateBook }) {
+  console.log("Book Component called!! & Book obj is, ", book);
+  //
+  useEffect(() => {
+    setLocalBook({ ...book });
+  }, [book]);
   //
   const bookId = book.bookId;
   // const { name, author, rating } = book;
@@ -31,7 +36,7 @@ function Book({ book, deleteBook, updateBook }) {
     console.log("Book has been edited!");
     setBookStateBeforeEdit({ ...localBook });
     // handle the http call here... call the http function with the localBook object that contains the new values to update
-    updateBook(bookId, bookStateBeforeEdit);
+    updateBook(bookId, localBook);
     setIsDisabled(!isDisabled);
   }
   //
