@@ -53,4 +53,22 @@ async function httpUpdateBook(id, updatedBook) {
   }
 }
 
-export { httpSubmitNewBook, httpDeleteBook, httpGetBooks, httpUpdateBook };
+async function httpDeleteBookCompletely(id) {
+  try {
+    return await fetch(`/v1/books/?id=${id}`, {
+      method: "delete",
+    });
+  } catch (error) {
+    return {
+      ok: false,
+    };
+  }
+}
+
+export {
+  httpSubmitNewBook,
+  httpDeleteBook,
+  httpGetBooks,
+  httpUpdateBook,
+  httpDeleteBookCompletely,
+};

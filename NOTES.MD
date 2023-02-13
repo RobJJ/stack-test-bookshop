@@ -14,6 +14,8 @@ Questions
 
 4. When testing the frontend - and you have already linked up feature on the backend - ,, how best to load in dummy data and dummy functions without having to make large changes... is there a design principle to follow here?
 
+5. How to 'log' or correctly debug things on server side code?
+
 todo: update a book inline
 
 // on click event... have the book props open up as inputs and the edit/del buttons change to accept or discard

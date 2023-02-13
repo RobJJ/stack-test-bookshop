@@ -4,6 +4,7 @@ import {
   httpDeleteBook,
   httpGetBooks,
   httpUpdateBook,
+  httpDeleteBookCompletely,
 } from "./requests";
 
 function useBooks() {
@@ -48,7 +49,7 @@ function useBooks() {
         // reload books...
         console.log("is this being called??");
         // get books is not actually refreshing the page with new books
-        await getBooks();
+        getBooks();
       } else {
         // let user know it wasnt successfull
       }
@@ -69,11 +70,26 @@ function useBooks() {
     [getBooks]
   );
 
+  const deleteBookCompletely = useCallback(
+    async (id) => {
+      const response = await httpDeleteBookCompletely(id);
+      const success = response.ok;
+      if (success) {
+        //
+        console.log("yesss??");
+        getBooks();
+      } else {
+        //
+      }
+    },
+    [getBooks]
+  );
+
   useEffect(() => {
     getBooks();
   }, [getBooks]);
 
-  return { submitBook, deleteBook, books, updateBook };
+  return { submitBook, deleteBook, books, updateBook, deleteBookCompletely };
 }
 
 export default useBooks;

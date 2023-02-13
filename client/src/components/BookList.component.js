@@ -2,7 +2,7 @@ import React from "react";
 import Book from "./Book.component";
 //
 //
-const BookList = ({ books, deleteBook, updateBook }) => {
+const BookList = ({ books, deleteBook, updateBook, deleteBookCompletely }) => {
   console.log("BookList Component called!!");
   //
   return (
@@ -14,6 +14,7 @@ const BookList = ({ books, deleteBook, updateBook }) => {
             <Book
               key={idx}
               book={book}
+              deleteBookCompletely={() => deleteBookCompletely(book.bookId)}
               deleteBook={() => deleteBook(book.bookId)}
               updateBook={updateBook}
             />

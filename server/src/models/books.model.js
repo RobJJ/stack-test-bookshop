@@ -47,6 +47,14 @@ async function deleteBookWithId(bookId) {
   return deletedBook.modifiedCount === 1;
 }
 //
+async function deleteBookCompletelyWithId(bookId) {
+  const deletedBook = await books.findOneAndDelete({ bookId: bookId });
+
+  // findOneAndDelete returns the object that was deleted
+  // based your conditional check on this info.. eg below.
+  return deletedBook.bookId === bookId;
+}
+//
 //
 //
 async function getAllBooks() {
@@ -74,4 +82,5 @@ module.exports = {
   deleteBookWithId,
   getAllBooks,
   updateBookWithId,
+  deleteBookCompletelyWithId,
 };

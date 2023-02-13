@@ -2,6 +2,7 @@ const {
   addNewBook,
   existsBookWithId,
   deleteBookWithId,
+  deleteBookCompletelyWithId,
   updateBookWithId,
   getAllBooks,
 } = require("../../models/books.model");
@@ -71,9 +72,30 @@ async function httpUpdateBook(req, res) {
   });
 }
 
+async function httpDeleteBookCompetely(req, res) {
+  const bookId = req.query.id;
+  const bookExists = await existsBookWithId(bookId);
+  if (!bookExists) {
+    return res.status(404).json({
+      error: "Book not found!",
+    });
+  }
+  const deletedBook = await deleteBookCompletelyWithId(bookId);
+  if (!deletedBook) {
+    return res.status(400).json({
+      error: "Book not deleted!",
+    });
+  }
+  // return meta data here
+  return res.status(200).json({
+    ok: true,
+  });
+}
+
 module.exports = {
   httpAddNewBook,
   httpDeleteBook,
   httpGetAllBooks,
   httpUpdateBook,
+  httpDeleteBookCompetely,
 };

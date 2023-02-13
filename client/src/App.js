@@ -16,7 +16,8 @@ function App() {
   //
   // const [testingBooks, setTestingBooks] = useState(testingBookList);
 
-  const { submitBook, books, deleteBook, updateBook } = useBooks();
+  const { submitBook, books, deleteBook, updateBook, deleteBookCompletely } =
+    useBooks();
   console.log("Books Object:: ", books);
   //
   return (
@@ -27,6 +28,7 @@ function App() {
           <div className="w-full text-2xl underline text-center">Book List</div>
           <BookList
             books={books}
+            deleteBookCompletely={deleteBookCompletely}
             deleteBook={deleteBook}
             updateBook={updateBook}
           />

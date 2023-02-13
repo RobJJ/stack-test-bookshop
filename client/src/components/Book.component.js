@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 //
 //
-function Book({ book, deleteBook, updateBook }) {
+function Book({ book, deleteBook, updateBook, deleteBookCompletely }) {
   console.log("Book Component called!! & Book obj is, ", book);
   //
   useEffect(() => {
@@ -14,7 +14,7 @@ function Book({ book, deleteBook, updateBook }) {
   // maybe replace the standard destructuring with this
   const [localBook, setLocalBook] = useState({ ...book });
   // const [bookStateBeforeEdit, setBookStateBeforeEdit] = useState({ ...book });
-  //
+  //ghffhgfjhgffdhgddhjjfdjhgfjdngf
   function toggleDisable(e) {
     setIsDisabled(!isDisabled);
   }
@@ -76,7 +76,7 @@ function Book({ book, deleteBook, updateBook }) {
         </div>
         <div
           className="w-1/2 bg-red-200 cursor-pointer"
-          onClick={isDisabled ? deleteBook : abortBookEdit}
+          onClick={isDisabled ? deleteBookCompletely : abortBookEdit}
         >
           {isDisabled ? "Del" : "Cancel"}
         </div>
