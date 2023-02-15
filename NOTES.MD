@@ -34,3 +34,4 @@ the db is being updated correct when deleting a book, but the front end is showi
 bug:
 the front end is being updated nicely with the edit of the book,, but the backend is not being updated
 I think both these problems have something to do with the ID of the book not corresponding to what we are doing with the backend... dono..
+.. change
